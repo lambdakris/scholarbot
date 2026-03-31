@@ -12,9 +12,6 @@ __pycache__/
 dist/
 build/
 
-# UV
-uv.lock
-
 # IDE
 .vscode/
 .idea/
