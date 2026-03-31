@@ -1,0 +1,39 @@
+services:
+  server_service:
+    build:
+      context: .
+      dockerfile: src/server/Dockerfile
+    ports:
+      - "8000:8000"
+      - "5678:5678"
+    environment:
+      - PYDEVD_DISABLE_FILE_VALIDATION=1
+    env_file:
+      - .env
+    command: uv run -m debugpy --listen 0.0.0.0:5678 -m fastapi dev main.py --host 0.0.0.0
+    develop:
+      watch:
+        - path: src/server
+          target: /src/server
+          action: sync
+
+  portal_service:
+    depends_on:
+      server_service:
+        condition: service_started
+    build:
+      context: .
+      dockerfile: src/portal/Dockerfile
+    ports:
+      - "8501:8501"
+      - "5679:5679"
+    environment:
+      - PYDEVD_DISABLE_FILE_VALIDATION=1
+    env_file:
+      - .env
+    command: uv run -m debugpy --listen 0.0.0.0:5679 -m streamlit run main.py --server.address 0.0.0.0
+    develop:
+      watch:
+        - path: src/portal
+          target: /src/portal
+          action: sync
