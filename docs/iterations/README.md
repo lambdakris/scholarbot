@@ -8,7 +8,7 @@ Current status, planned milestones, and backlog for ScholarBot.
 
 | Milestone | Title | Status |
 |-----------|-------|--------|
-| **0** | Foundation | 🔲 Not started |
+| **0** | Foundation | 🔄 In progress |
 | **1** | Baseline Agent | 🔲 Not started |
 | **2** | Eval Harness | 🔲 Not started |
 | **3** | Observability | 🔲 Not started |

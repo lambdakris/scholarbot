@@ -30,6 +30,14 @@ docs/               # Living documentation
 scripts/            # Developer scripts (added in Milestone 0.3)
 ```
 
+## Setup
+
+```bash
+# First time only
+cp .env.example .env   # then fill in secrets as they are added each milestone
+uv sync
+```
+
 ## Commands
 
 ```bash
