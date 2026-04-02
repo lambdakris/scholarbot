@@ -10,7 +10,10 @@ st.caption("Deep Research Agent")
 # Server status indicator
 try:
     response = httpx.get(f"{SERVER_URL}/health", timeout=2)
-    st.success("Server connected", icon="✅") if response.status_code == 200 else st.warning("Server unreachable", icon="⚠️")
+    if response.status_code == 200:
+        st.success("Server connected", icon="✅")
+    else:
+        st.warning("Server unreachable", icon="⚠️")
 except Exception:
     st.warning("Server unreachable", icon="⚠️")
 

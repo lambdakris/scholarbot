@@ -2,6 +2,16 @@
 
 ---
 
+## Iteration 0.2 — MLflow local setup
+
+**Status:** Complete
+
+**Lessons:**
+
+- **Iter 0.2 (Streamlit ternary):** Using a ternary expression with `st.*` calls causes Streamlit to render the `DeltaGenerator` return value as visible output on the page. *Lesson: always use `if/else` blocks with Streamlit calls — never inline ternary expressions.*
+
+---
+
 ## Iteration 0.1 — Project scaffold
 
 **Status:** Complete
