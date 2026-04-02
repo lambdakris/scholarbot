@@ -5,8 +5,10 @@ description = "A Deep Research agent with benchmark-driven, self-improving archi
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "anthropic>=0.49.0",
     "fastapi[standard]>=0.115.0",
     "httpx>=0.28.0",
+    "mlflow>=3.0.0",
     "python-dotenv>=1.2.1",
     "streamlit>=1.40.0",
     "uvicorn>=0.34.0",

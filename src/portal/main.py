@@ -10,10 +10,7 @@ st.caption("Deep Research Agent")
 # Server status indicator
 try:
     response = httpx.get(f"{SERVER_URL}/health", timeout=2)
-    if response.status_code == 200:
-        st.success("Server connected", icon="✅")
-    else:
-        st.warning("Server unreachable", icon="⚠️")
+    st.success("Server connected", icon="✅") if response.status_code == 200 else st.warning("Server unreachable", icon="⚠️")
 except Exception:
     st.warning("Server unreachable", icon="⚠️")
 
@@ -22,5 +19,16 @@ st.divider()
 question = st.text_area("Ask a research question", height=100)
 
 if st.button("Research", type="primary") and question.strip():
-    with st.chat_message("assistant"):
-        st.write("*(Agent not yet connected — coming in Milestone 1)*")
+    with st.spinner("Researching..."):
+        try:
+            response = httpx.post(
+                f"{SERVER_URL}/chat",
+                json={"question": question},
+                timeout=30,
+            )
+            response.raise_for_status()
+            answer = response.json()["answer"]
+            with st.chat_message("assistant"):
+                st.write(answer)
+        except Exception as e:
+            st.error(f"Request failed: {e}")

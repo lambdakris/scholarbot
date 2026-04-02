@@ -1,5 +1,25 @@
 services:
+  mlflow_service:
+    image: ghcr.io/mlflow/mlflow:latest
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow_volume:/opt/mlflow
+    command:
+      - /bin/sh
+      - -c
+      - |
+        mkdir -p /opt/mlflow
+        mlflow server \
+          --host "0.0.0.0" \
+          --port "5000" \
+          --allowed-hosts "*" \
+          --backend-store-uri "sqlite:///opt/mlflow/mlflow.db"
+
   server_service:
+    depends_on:
+      mlflow_service:
+        condition: service_started
     build:
       context: .
       dockerfile: src/server/Dockerfile
@@ -8,6 +28,7 @@ services:
       - "5678:5678"
     environment:
       - PYDEVD_DISABLE_FILE_VALIDATION=1
+      - MLFLOW_TRACKING_URI=http://mlflow_service:5000
     env_file:
       - path: .env
         required: false
@@ -39,3 +60,6 @@ services:
         - path: src/portal
           target: /src/portal
           action: sync
+
+volumes:
+  mlflow_volume:
