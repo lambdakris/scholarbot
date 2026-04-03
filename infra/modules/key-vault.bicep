@@ -12,7 +12,7 @@ param tags object = {}
 // not here. This avoids the chicken-and-egg problem of needing managed identity IDs before
 // the consuming service exists. Developer access is handled via scripts/rbac-dev.sh.
 
-resource keyVault 'Microsoft.KeyVault/vaults@2023-07-01' = {
+resource keyVault 'Microsoft.KeyVault/vaults@2025-05-01' = {
   name: name
   location: location
   tags: tags

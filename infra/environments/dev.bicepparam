@@ -6,9 +6,10 @@ param location = 'centralus'
 // AI Foundry instances — one per region needed for model quota.
 // Add entries here when models require deployment in different regions.
 param foundries = [
+  /*
   {
-    name: 'scholar-dev-foundry-centralus'
-    location: 'centralus'
+    name: 'scholar-dev-foundry-swedencentral'
+    location: 'swedencentral'
     models: [
       {
         deploymentName: 'claude-haiku-4-5'
@@ -18,7 +19,13 @@ param foundries = [
         skuName: 'GlobalStandard'
         capacity: 10
         enabled: true
+        modelProviderData: {
+          industry: 'Technology'
+          organizationName: 'Personal'
+          countryCode: 'US'
+        }
       }
     ]
   }
+  */
 ]

@@ -20,6 +20,7 @@ Array of model deployments. Each entry:
     skuName: string          // e.g. "GlobalStandard", "Standard" — may differ by provider
     capacity: int            // TPM in thousands
     enabled: bool            // set false to skip (e.g. if format unsupported in Bicep)
+    modelProviderData: object? // required for Anthropic: { industry, organizationName, countryCode }
   }
 ''')
 param models array = []
@@ -29,7 +30,7 @@ param models array = []
 // not here. Developer access is handled via scripts/rbac-dev.sh.
 
 // AI Foundry account (kind: AIServices supports both OpenAI and Anthropic models)
-resource aiFoundry 'Microsoft.CognitiveServices/accounts@2025-04-01-preview' = {
+resource aiFoundry 'Microsoft.CognitiveServices/accounts@2026-01-15-preview' = {
   name: name
   location: location
   tags: tags
@@ -51,7 +52,7 @@ resource aiFoundry 'Microsoft.CognitiveServices/accounts@2025-04-01-preview' = {
 }
 
 // AI Foundry project
-resource aiProject 'Microsoft.CognitiveServices/accounts/projects@2025-04-01-preview' = {
+resource aiProject 'Microsoft.CognitiveServices/accounts/projects@2026-01-15-preview' = {
   parent: aiFoundry
   name: projectName
   location: location
@@ -66,7 +67,7 @@ resource aiProject 'Microsoft.CognitiveServices/accounts/projects@2025-04-01-pre
 // Anthropic format is best-effort: if Azure rejects a deployment, set enabled=false
 // and deploy that model manually via the Azure portal (AI Foundry → Model Catalog).
 @batchSize(1)
-resource modelDeployments 'Microsoft.CognitiveServices/accounts/deployments@2025-04-01-preview' = [for model in models: if (model.enabled) {
+resource modelDeployments 'Microsoft.CognitiveServices/accounts/deployments@2026-01-15-preview' = [for model in models: if (model.enabled) {
   parent: aiFoundry
   name: model.deploymentName
   sku: {
@@ -79,6 +80,7 @@ resource modelDeployments 'Microsoft.CognitiveServices/accounts/deployments@2025
       name: model.name
       version: model.version
     }
+    modelProviderData: contains(model, 'modelProviderData') ? model.modelProviderData : null
   }
 }]
 
