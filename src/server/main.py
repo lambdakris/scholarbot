@@ -1,5 +1,7 @@
 import mlflow
+import mlflow.anthropic  # noqa: F811 — runtime submodule, not in type stubs
 from anthropic import AnthropicFoundry
+from anthropic.types import TextBlock
 from fastapi import FastAPI
 from pydantic import BaseModel
 
@@ -7,7 +9,7 @@ from .settings import settings
 
 mlflow.set_tracking_uri(settings.mlflow_tracking_uri)
 mlflow.set_experiment("scholarbot-dev")
-mlflow.anthropic.autolog()
+mlflow.anthropic.autolog()  # type: ignore[attr-defined]
 
 app = FastAPI(title="ScholarBot API")
 
@@ -37,4 +39,6 @@ def chat(request: ChatRequest) -> ChatResponse:
         max_tokens=1024,
         messages=[{"role": "user", "content": request.question}],
     )
-    return ChatResponse(answer=message.content[0].text)
+    block = message.content[0]
+    text = block.text if isinstance(block, TextBlock) else ""
+    return ChatResponse(answer=text)
