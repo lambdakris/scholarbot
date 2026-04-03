@@ -11,6 +11,34 @@ ScholarBot — a Deep Research agent built with benchmark-driven, self-improving
 
 See `docs/iterations/README.md` for the full milestone plan and backlog.
 
+## Meta Directives
+
+*Written by the meta assistant at `~/source/`. Read these at session start — they reflect strategic decisions that affect this project.*
+
+- **URGENT:** Iteration 0.3 (Azure infrastructure) was never validated. The Bicep deployment needs to be run (`./scripts/deploy-dev.sh`) and verified before Milestone 0 is truly complete. Expect possible issues with the Anthropic model deployment format and the `AI Foundry API` endpoint output key. Remove this directive once validated.
+- ScholarBot is the **#1 priority project** in the portfolio. See `~/source/PROJECTS.md` for full priority stack.
+- Start with **Claude Agents SDK** for the agent (Phase A). DSPy comes in Phase B.
+- Use **Streamlit** for UI in the near term. React/Next.js is a planned montage sprint for later.
+- **DeepSearchQA** (`google/deepsearchqa`) is the first benchmark for the eval harness.
+
+## Iteration Loop (follow for every iteration)
+
+Do not skip steps. Do not mark an iteration complete without Validate.
+
+1. **Scope** — define what this iteration delivers, acceptance criteria in Given/When/Then
+2. **Align** — present scope to human, confirm before building
+3. **Build** — implement the scope
+4. **Validate** — human verifies (run it, deploy it, inspect it). If it requires human action, prompt and wait.
+5. **Adapt** — fix issues if validation reveals them
+6. **Sync** — update ALL of the following:
+   - [ ] This file (Current Status section)
+   - [ ] `docs/iterations/README.md` (milestone status)
+   - [ ] Milestone lessons log (`docs/iterations/milestone-*.md`)
+   - [ ] `~/source/PROJECTS.md` (status line for ScholarBot)
+   - [ ] PRD and Architecture if they no longer reflect reality
+
+See `docs/STRATEGY.md` for the full methodology.
+
 ## Documentation
 
 Read these before making significant changes:
@@ -83,4 +111,4 @@ uv run pyright src/
 - **Managed identity** for all Azure services in production. No connection strings or API keys in code.
 - **`.env` for local secrets** — never committed. See `.env.example` for required variables.
 - **Vertical slices** — each iteration delivers something end-to-end that can be validated in one sitting.
-- **Sync checklist** after every iteration — see `docs/iterations/README.md`.
+- **Sync checklist** after every iteration — see the Iteration Loop section above.
