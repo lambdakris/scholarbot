@@ -6,7 +6,7 @@ ScholarBot — a Deep Research agent built with benchmark-driven, self-improving
 
 ## Current Status
 
-**Milestone 0 (Foundation): IN PROGRESS — on Iteration 0.1**
+**Milestone 0 (Foundation): IN PROGRESS — on Iteration 0.3**
 
 See `docs/iterations/README.md` for the full milestone plan and backlog.
 
@@ -25,9 +25,10 @@ Read these before making significant changes:
 src/server/         # FastAPI backend
 src/portal/         # Streamlit frontend
 tests/              # Integration tests
-infra/              # Bicep IaC (added in Milestone 0.3)
+infra/              # Bicep IaC — see infra/README.md
+scripts/            # deploy-dev.sh, rbac-dev.sh
 docs/               # Living documentation
-scripts/            # Developer scripts (added in Milestone 0.3)
+.github/workflows/  # CI (lint + type check)
 ```
 
 ## Setup
@@ -44,7 +45,7 @@ uv sync
 # Install dependencies
 uv sync
 
-# Dev (Docker Compose — server + portal)
+# Dev (Docker Compose — server + portal + MLflow)
 docker compose up --build
 
 # Dev (Docker Compose with hot reload)
@@ -58,6 +59,12 @@ uv run ruff format --check src/ tests/
 
 # Type check
 uv run pyright src/
+
+# Deploy dev infrastructure (requires az login)
+./scripts/deploy-dev.sh
+
+# Grant developer RBAC (one-time after deploy)
+./scripts/rbac-dev.sh
 ```
 
 ## Ports
@@ -68,13 +75,11 @@ uv run pyright src/
 | portal_service | 8501 | 5679 |
 | mlflow_service | 5000 | — |
 
-MLflow added in Milestone 0.2.
-
 ## Key Conventions
 
 - **Single `pyproject.toml`** at root — all dependencies in one place.
 - **`uv sync --frozen`** in Docker builds — lock file is the source of truth.
-- **Managed identity** for all Azure services (added in Milestone 0.3). No connection strings or API keys in code.
+- **Managed identity** for all Azure services in production. No connection strings or API keys in code.
 - **`.env` for local secrets** — never committed. See `.env.example` for required variables.
 - **Vertical slices** — each iteration delivers something end-to-end that can be validated in one sitting.
 - **Sync checklist** after every iteration — see `docs/iterations/README.md`.
