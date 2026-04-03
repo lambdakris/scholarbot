@@ -26,6 +26,9 @@ Model deployments are configured per-foundry instance in `environments/dev.bicep
 ## Deploy
 
 ```bash
+# 0. Make scripts executable (first time only)
+chmod +x scripts/deploy-dev.sh scripts/rbac-dev.sh
+
 # 1. Deploy infrastructure
 ./scripts/deploy-dev.sh
 
