@@ -2,6 +2,20 @@
 
 ---
 
+## Iteration 0.3 — Azure infrastructure
+
+**Status:** Complete
+
+**Lessons:**
+
+- **Iter 0.3 (RBAC timing):** Service-to-service role assignments belong in the consuming service's Bicep, not the providing service's. Creating them at provision time requires managed identity IDs that don't exist yet. *Lesson: RBAC follows the consumer — the thing that needs access declares what it needs, not the thing being accessed.*
+
+- **Iter 0.3 (Dev RBAC simplification):** Resource-group-scoped role assignments eliminate the need to track individual resources in dev scripts. Works for most Azure services (Key Vault, Cognitive Services, AI Search). Exception: PostgreSQL uses its own auth system for data plane access. *Lesson: scope dev RBAC broadly, production RBAC narrowly.*
+
+- **Iter 0.3 (CI lock file):** Use `uv sync --frozen` in CI to fail loudly when the lock file is stale. Without `--frozen`, UV silently regenerates, masking dependency drift.
+
+---
+
 ## Iteration 0.2 — MLflow local setup
 
 **Status:** Complete
