@@ -4,7 +4,7 @@
 
 ## Iteration 0.3 — Azure infrastructure
 
-**Status:** Complete
+**Status:** Complete (validated 2026-04-03)
 
 **Lessons:**
 
@@ -13,6 +13,12 @@
 - **Iter 0.3 (Dev RBAC simplification):** Resource-group-scoped role assignments eliminate the need to track individual resources in dev scripts. Works for most Azure services (Key Vault, Cognitive Services, AI Search). Exception: PostgreSQL uses its own auth system for data plane access. *Lesson: scope dev RBAC broadly, production RBAC narrowly.*
 
 - **Iter 0.3 (CI lock file):** Use `uv sync --frozen` in CI to fail loudly when the lock file is stale. Without `--frozen`, UV silently regenerates, masking dependency drift.
+
+- **Iter 0.3 (Anthropic models via Bicep):** Azure does not support deploying Anthropic models via Bicep/ARM — the required `modelProviderData` property is absent from the schema across all published API versions. Microsoft's own guidance is portal-only deployment. *Lesson: deploy the AI Foundry account via IaC but deploy Anthropic models manually via the portal. Keep model entries commented out in bicepparam with `enabled: false` as documentation of intent.*
+
+- **Iter 0.3 (Anthropic model regions):** Claude models on Azure AI Foundry require specific regions (e.g., `swedencentral`) that may differ from the main resource group location. *Lesson: parameterize foundry instances per-region from the start — the multi-foundry array pattern pays for itself immediately.*
+
+- **Iter 0.3 (script permissions):** Deploy scripts were committed without the executable bit. *Lesson: always `chmod +x` scripts before committing, or add a CI check.*
 
 ---
 

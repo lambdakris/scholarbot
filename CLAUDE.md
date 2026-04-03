@@ -15,7 +15,6 @@ See `docs/iterations/README.md` for the full milestone plan and backlog.
 
 *Written by the meta assistant at `~/source/`. Read these at session start — they reflect strategic decisions that affect this project.*
 
-- **URGENT:** Iteration 0.3 (Azure infrastructure) was never validated. The Bicep deployment needs to be run (`./scripts/deploy-dev.sh`) and verified before Milestone 0 is truly complete. Expect possible issues with the Anthropic model deployment format and the `AI Foundry API` endpoint output key. Remove this directive once validated.
 - ScholarBot is the **#1 priority project** in the portfolio. See `~/source/PROJECTS.md` for full priority stack.
 - Start with **Claude Agents SDK** for the agent (Phase A). DSPy comes in Phase B.
 - Use **Streamlit** for UI in the near term. React/Next.js is a planned montage sprint for later.
