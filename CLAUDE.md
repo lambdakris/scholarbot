@@ -31,10 +31,12 @@ Do not skip steps. Do not mark an iteration complete without Validate.
 5. **Adapt** — fix issues if validation reveals them
 6. **Sync** — update ALL of the following:
    - [ ] This file (Current Status section)
+   - [ ] `README.md` (Current status + tech stack if changed)
    - [ ] `docs/iterations/README.md` (status table)
    - [ ] Milestone doc (`docs/iterations/milestone-*.md`) — journal entry + lessons
    - [ ] `~/source/PROJECTS.md` (status line for ScholarBot)
    - [ ] PRD and Architecture if they no longer reflect reality
+   - [ ] Grep for stale references when a technology or dependency changes
 
 See `docs/STRATEGY.md` for the full methodology.
 
