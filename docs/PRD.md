@@ -122,7 +122,7 @@ DSPy teleprompters applied to optimize agent components based on traced runs and
 
 | Question | Status | Notes |
 |----------|--------|-------|
-| Which Claude model for Azure OpenAI? | Open | Depends on Azure availability; likely claude-sonnet-4-6 |
+| Which Claude model for Azure OpenAI? | Resolved | Claude Haiku 4.5 via Azure AI Foundry in swedencentral |
 | DeepSearchQA grading: use Gemini 2.5 Flash (as paper uses) or substitute with Azure OpenAI? | Open | Cost and availability tradeoff |
 | CosmosDB for chat history or start with in-memory/SQLite? | Open | SQLite may be simpler for V1; CosmosDB for production path |
-| Tavily vs. other search providers? | Open | Tavily is the default; assess at implementation |
+| Tavily vs. other search providers? | Resolved | Using Claude Agent SDK built-in WebSearch — no external search provider needed |
