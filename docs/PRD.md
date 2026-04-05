@@ -41,7 +41,7 @@ ScholarBot serves two purposes simultaneously:
 **Research:**
 - Accept a natural language question via chat interface
 - Autonomously decompose the question into search sub-tasks
-- Execute multi-hop web searches (via Tavily) to gather evidence
+- Execute multi-hop web searches (via Claude Agent SDK built-in WebSearch) to gather evidence
 - Synthesize findings into a comprehensive answer
 - Cite sources with links
 
@@ -84,8 +84,8 @@ DSPy teleprompters applied to optimize agent components based on traced runs and
 | Deployment | Azure Container Apps | Managed identity, no connection strings |
 | Local dev | Docker Compose + debugpy | VS Code attach support |
 | Package management | UV | Consistent with other projects |
-| LLM provider | Azure OpenAI | Claude via Anthropic API as secondary option |
-| Web search | Tavily Python SDK | Primary search tool |
+| LLM provider | Azure AI Foundry (Claude) | Via Claude Agent SDK + Foundry env vars |
+| Web search | Claude Agent SDK built-in WebSearch | Replaced Tavily — no external search dependency |
 | Observability | MLflow 3.x | Tracing, eval, experiment tracking |
 | IaC | Bicep | Consistent with VentureBot |
 | CI/CD | GitHub Actions | Auto-test on main, manual prod deploy |

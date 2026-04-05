@@ -9,7 +9,7 @@ Current status, planned milestones, and backlog for ScholarBot.
 | Milestone | Title | Status |
 |-----------|-------|--------|
 | **0** | Foundation | ✅ Complete |
-| **1** | Baseline Agent | 🔲 Not started |
+| **1** | Baseline Agent | 🔨 In progress (1.1 complete) |
 | **2** | Eval Harness | 🔲 Not started |
 | **3** | Observability | 🔲 Not started |
 | **4** | Cloud Deployment | 🔲 Not started |
@@ -69,15 +69,16 @@ Current status, planned milestones, and backlog for ScholarBot.
 
 ### Iterations
 
-#### 1.1 — Single-hop research agent
-- Claude Agents SDK agent with Tavily web search tool
-- Takes a question, issues one search, returns answer + sources
+#### 1.1 — Single-hop research agent ✅
+- Claude Agent SDK agent with built-in WebSearch/WebFetch tools (replaced Tavily)
+- Takes a question, searches the web, returns answer + sources
 - Connected to Streamlit chat interface
+- MLflow tracing via `mlflow.anthropic.autolog()` integration with Agent SDK
 
 **Acceptance criteria:**
 - Given the system is running
 - When I ask "What is the current population of Tokyo?"
-- Then the agent issues a Tavily search, returns an answer with at least one cited source, and the full interaction is visible in MLflow traces
+- Then the agent issues a web search, returns an answer with at least one cited source, and the full interaction is visible in MLflow traces
 
 #### 1.2 — Multi-hop research agent
 - Agent can decompose complex questions into multiple sequential searches
