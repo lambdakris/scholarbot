@@ -53,6 +53,7 @@ Read these before making significant changes:
 src/server/         # FastAPI backend
 src/portal/         # Streamlit frontend
 tests/              # Integration tests
+notebooks/          # Jupyter notebooks for SDK exploration
 infra/              # Bicep IaC — see infra/README.md
 scripts/            # deploy-dev.sh, rbac-dev.sh
 docs/               # Living documentation
@@ -87,6 +88,9 @@ uv run ruff format --check src/ tests/
 
 # Type check
 uv run pyright src/
+
+# Jupyter notebooks (SDK exploration)
+uv run jupyter lab
 
 # Deploy dev infrastructure (requires az login)
 ./scripts/deploy-dev.sh

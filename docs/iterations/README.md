@@ -32,6 +32,8 @@ Each active milestone has its own document (`milestone-NN.md`) containing iterat
 
 **Job:** Instrument the system so that every layer of the four-layer framework is visible in MLflow — not just LLM calls, but agent decisions, tool use patterns, and coding agent behavior.
 
+**Known gap:** MLflow's Agent SDK autolog drops ThinkingBlocks, SystemMessages, and per-turn token usage. Plan: monkeypatch locally, then contribute upstream to MLflow.
+
 ### Milestone 4 — Cloud Deployment
 
 **Job:** Deploy ScholarBot to Azure Container Apps so it is accessible via a public URL and the architecture is production-grade.
@@ -56,9 +58,8 @@ Each active milestone has its own document (`milestone-NN.md`) containing iterat
 | Chat history persistence | In-memory for V1; CosmosDB for production path | Milestone 4 (cloud deployment) |
 | Runtime self-optimization (DSPy teleprompters) | Phase C of framework exploration — optimize agent components based on traces and benchmark feedback | After Milestone 6 |
 | React frontend + agentic UI patterns | Prerequisite: React montage sprint | Milestone 5 |
+| MLflow upstream PR: Agent SDK ThinkingBlock tracing | Contribute monkeypatch as proper fix to `mlflow/mlflow` | After Milestone 3 monkeypatch is validated |
 | BrowseComp-Plus | High friction (obfuscation, Java, expensive eval) — evaluate feasibility | After LiveDRBench |
-| Debugging support | debugpy attach not working in Docker Compose | Next dev tooling pass |
-| Notebook experience for SDK exploration | Jupyter notebook for direct Agent SDK experimentation | Before iterations that touch Agent SDK |
 
 ---
 
