@@ -77,7 +77,7 @@ See [infra/README.md](infra/README.md) for provisioning the dev environment.
 
 ## Current status
 
-**Milestone 1 (Baseline Agent)** — in progress. Single-hop research agent with web search operational (1.1 complete). Foundation (Milestone 0) complete.
+**Milestone 1 (Baseline Agent)** — in progress. Research agent with web search operational, multi-hop verified (1.2 complete). Foundation (Milestone 0) complete.
 
 See the [Milestone Plan](docs/iterations/README.md) for what's next.
 

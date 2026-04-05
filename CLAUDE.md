@@ -7,7 +7,7 @@ ScholarBot — a Deep Research agent built with benchmark-driven, self-improving
 ## Current Status
 
 **Milestone 0 (Foundation): COMPLETE**
-**Milestone 1 (Baseline Agent): IN PROGRESS — Iteration 1.1 complete**
+**Milestone 1 (Baseline Agent): IN PROGRESS — Iteration 1.2 complete**
 
 See `docs/iterations/README.md` for the full milestone plan and backlog.
 
