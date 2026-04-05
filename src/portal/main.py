@@ -27,7 +27,7 @@ if st.button("Research", type="primary") and question.strip():
             response = httpx.post(
                 f"{SERVER_URL}/chat",
                 json={"question": question},
-                timeout=30,
+                timeout=300,
             )
             response.raise_for_status()
             answer = response.json()["answer"]
