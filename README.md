@@ -24,7 +24,7 @@ For the full conceptual foundation, see [FOUNDATIONS.md](docs/FOUNDATIONS.md).
 - **Backend**: FastAPI
 - **Frontend**: Streamlit
 - **Observability**: MLflow 3.x (tracing, evaluation, experiment tracking)
-- **Web Search**: Tavily
+- **Web Search**: Claude Agent SDK built-in WebSearch
 - **Infrastructure**: Azure Container Apps, Bicep IaC, GitHub Actions CI
 - **Package Management**: UV
 
@@ -77,7 +77,7 @@ See [infra/README.md](infra/README.md) for provisioning the dev environment.
 
 ## Current status
 
-**Milestone 0 (Foundation)** — in progress. Local dev environment operational, MLflow tracing verified, Azure infrastructure defined.
+**Milestone 1 (Baseline Agent)** — in progress. Single-hop research agent with web search operational (1.1 complete). Foundation (Milestone 0) complete.
 
 See the [Milestone Plan](docs/iterations/README.md) for what's next.
 
