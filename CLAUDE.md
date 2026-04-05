@@ -31,8 +31,8 @@ Do not skip steps. Do not mark an iteration complete without Validate.
 5. **Adapt** — fix issues if validation reveals them
 6. **Sync** — update ALL of the following:
    - [ ] This file (Current Status section)
-   - [ ] `docs/iterations/README.md` (milestone status)
-   - [ ] Milestone lessons log (`docs/iterations/milestone-*.md`)
+   - [ ] `docs/iterations/README.md` (status table)
+   - [ ] Milestone doc (`docs/iterations/milestone-*.md`) — journal entry + lessons
    - [ ] `~/source/PROJECTS.md` (status line for ScholarBot)
    - [ ] PRD and Architecture if they no longer reflect reality
 

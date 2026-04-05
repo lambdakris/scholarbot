@@ -229,31 +229,50 @@ Every project maintains these artifacts. They are the source of truth and must s
 |----------|----------|---------|-------------|
 | **Product Spec** (PRD) | `docs/PRD.md` | What the product does | Iteration boundaries, scope changes |
 | **Technical Spec** (Architecture) | `docs/ARCHITECTURE.md` | How the system works | Iteration boundaries, technical decisions |
-| **Milestone Plan** | `docs/iterations/README.md` + per-milestone files | What we're building and in what order | Every iteration boundary |
+| **Milestone Plan** | `docs/iterations/README.md` (dashboard) | Status table, unscoped milestones, backlog | Every iteration boundary |
+| **Milestone Docs** | `docs/iterations/milestone-*.md` | Iteration specs, journal, lessons — one file per milestone | Every iteration boundary |
 | **Validation Guide** | `docs/VALIDATION.md` | How to validate each iteration | When iterations are added/modified |
 | **Backlog** | `docs/iterations/README.md` (backlog section) | Deferred items and known issues | Continuously |
-| **Lessons Log** | Per-milestone files (`docs/iterations/milestone-*.md`) | What we learned from each iteration | Every iteration boundary, every adaptation |
 
 ---
 
-## Lessons Log
+## Milestone Documents
 
-Every change is a learning opportunity. The Lessons Log captures what we learned so it compounds across iterations and projects.
+Each active milestone has a single document (`docs/iterations/milestone-NN.md`) that serves as the source of truth for that milestone. It contains three sections:
+
+### Iterations
+The spec for each iteration: what it delivers, acceptance criteria (Given/When/Then). Moved here from the README once the milestone is scoped. Iterations are marked ✅ when validated.
+
+### Journal
+A narrative account of each iteration — what happened, what surprised us, what the decision points looked like. Written at the Sync step. The journal serves two purposes:
+1. **Context preservation** — captures the *why* and *how* that commit messages and lessons alone don't convey.
+2. **Blog material** — the raw narrative for "learning in public" posts. A good journal entry can be edited into a blog post with minimal rework.
+
+**What to capture:**
+- What the original plan was and how it changed
+- Surprises, dead ends, and pivots
+- Key decisions and what informed them
+- The experience of using a tool/framework for the first time
+
+**Tone:** Write as if explaining to a peer who wasn't in the room. Include enough context that the entry is self-contained.
+
+### Lessons
+Terse, scannable takeaways — designed to be skimmed at planning time. These are the distilled insights from the journal.
 
 **What to record:**
-- **Process lessons** — what to do differently in how we work. ("Specify UX experientially, not just structurally." "Scope iterations to vertical slices.")
-- **Domain lessons** — what we now understand better about the problem or the user. ("Users need persistent chat context while switching conversations." "Streaming UX requires a different mental model than request-response.")
-- **Technical lessons** — what we learned about the tools, frameworks, or architecture. ("Streamlit multi-page navigation doesn't support sidebar-persistent state." "SSE intent events need a placeholder pattern for inline rendering.")
+- **Process lessons** — what to do differently in how we work.
+- **Domain lessons** — what we now understand better about the problem or the user.
+- **Technical lessons** — what we learned about the tools, frameworks, or architecture.
 
 **What NOT to record:**
 - Bug fixes that don't reveal a process or understanding gap
 - Implementation details that are already captured in code or specs
 
-**Format:** Each lesson is a short entry tied to the iteration or adaptation that produced it:
+**Format:** Each lesson is a short entry tied to the iteration that produced it:
 
-> **Iter 1.3 (sidebar refactor):** The multi-page portal layout was functionally correct but experientially wrong. *Lesson: UX must be specified in terms of the experience and the job it serves, not just the features it contains. Use wireframes, flow descriptions, or JTBD framing to catch experience issues before building.*
+> **Iter 1.1 (Agent SDK is a CLI wrapper):** The Claude Agent SDK is not a thin API client — it spawns the Claude Code CLI as a subprocess. *Lesson: the Agent SDK owns its own LLM connection — don't try to manage it yourself.*
 
-The Lessons Log is reviewed at the start of each planning activity to inform how iterations are scoped and specified.
+Lessons are reviewed at the start of each planning activity to inform how iterations are scoped and specified.
 
 ---
 
