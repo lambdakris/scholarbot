@@ -162,6 +162,7 @@ The Iteration Loop runs once per iteration. Each iteration is scoped to a vertic
 - State acceptance criteria in Given/When/Then format
 - Identify which jobs (JTBD) this iteration serves
 - List what's explicitly out of scope
+- **Architecture check:** Does this iteration depend on decisions about system structure, module boundaries, data flow, or cross-cutting concerns that haven't been made yet? If yes, resolve those through architectural design (Discovery/Specification in the Product Loop) *before* continuing to Align. Architectural decisions made implicitly inside iteration scoping tend to be invisible, under-examined, and expensive to reverse.
 
 ### Align (Human)
 - Present the iteration scope to the human before building
@@ -306,3 +307,4 @@ Change is expected. The process handles it through the Sync step:
 | Skipping the sync step after validation | Always check: does spec match reality? Does plan still make sense? |
 | Letting the milestone plan live in conversation | Write it down in a durable artifact that can be referenced and revised |
 | Making corrections without capturing the lesson | Record what the change taught you; lessons compound across iterations and projects |
+| Embedding architectural decisions inside iteration scoping | When "where should this code live?" leads to "how should these modules interact?", stop — that's architecture, not scoping. Resolve through design first, then return to the iteration. |
