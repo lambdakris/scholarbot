@@ -32,29 +32,30 @@
 - When I ask a question requiring multiple steps (e.g., "How did the Fed's 2022 rate decisions affect mortgage rates in California?")
 - Then the trace shows the agent's search strategy (single or multi-hop), and the journal documents the observed behavior and any gaps
 
-### 1.3 — DeepSearchQA dataset loader
+### 1.3 — Dataset loading and trace generation
 
-- Download `google/deepsearchqa` from HuggingFace
-- Build a dataset loader that samples N examples (configurable, default 25)
-- Each sample exposes: question, ground truth answer(s), and domain
-- CLI or script to run the agent against the sampled questions and save outputs alongside ground truth for review
+- Create the inference module (`src/inference/`) — extract agent config and `research()` function from server
+- Create the evaluation module (`src/evaluation/`) — dataset loader for DeepSearchQA, variant-aware `predict_fn`
+- Set up the evaluation notebook following [EVAL_GUIDE.md](../EVAL_GUIDE.md) Phase B
+- Load DeepSearchQA, generate traces for `v1-baseline`, verify traces appear in MLflow
 
 **Acceptance criteria:**
-- Given the dataset loader is configured with a sample size of 25
-- When I run `uv run python -m scholarbot.eval.sample`
-- Then it produces a structured output file containing each question, the agent's answer, and the DeepSearchQA ground truth answer — ready for side-by-side review
+- Given the evaluation notebook is configured and MLflow is running
+- When I run the notebook through Phase B1 (generate traces)
+- Then 25 DeepSearchQA questions have been run through the agent and their traces are visible in MLflow, tagged with variant `v1-baseline`
 
-### 1.4 — Manual error analysis
+### 1.4 — Error analysis
 
-- Review the sampled outputs from 1.3: agent answer vs. ground truth, side-by-side
-- Use MLflow traces to understand *why* the agent answered the way it did for each failure case
-- Categorize observed failure modes (e.g., wrong decomposition, missed evidence, poor synthesis, hallucination)
+- Follow [EVAL_GUIDE.md](../EVAL_GUIDE.md) Phase B2-B4 (look at data, coding agent analysis, annotation)
+- Review traces in MLflow UI and notebook — identify application-specific failure categories
+- Annotate traces with pass/fail and failure category
+- Document findings in this milestone's journal
 - No fixes in this iteration — observation only
 
 **Acceptance criteria:**
-- Given the sampled outputs from 1.3 have been reviewed
-- When I open the Error Analysis section of this document
-- Then it contains a structured analysis of at least 3 distinct failure mode categories, each with example question/answer/ground-truth triplets and a hypothesis about root cause
+- Given the traces from 1.3 have been reviewed and annotated
+- When I open the Journal and Lessons sections of this document
+- Then they contain a structured analysis of distinct failure categories grounded in trace evidence, each with example questions and a hypothesis about root cause
 
 ---
 
