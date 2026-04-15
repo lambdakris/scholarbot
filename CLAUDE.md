@@ -7,7 +7,7 @@ ScholarBot — a Deep Research agent built with benchmark-driven, self-improving
 ## Current Status
 
 **Milestone 0 (Foundation): COMPLETE**
-**Milestone 1 (Baseline Agent): IN PROGRESS — Iteration 1.2 complete**
+**Milestone 1 (Baseline Agent): IN PROGRESS — Iteration 1.3 complete**
 
 See `docs/iterations/README.md` for the full milestone plan and backlog.
 
@@ -117,3 +117,4 @@ uv run jupyter lab
 - **`.env` for local secrets** — never committed. See `.env.example` for required variables.
 - **Vertical slices** — each iteration delivers something end-to-end that can be validated in one sitting.
 - **Sync checklist** after every iteration — see the Iteration Loop section above.
+- **Only commit what's been built and validated.** Don't write placeholder code, scaffold future phases, or prescribe implementation details for work that hasn't been done yet. Premature artifacts bias future decisions toward guesses instead of discoveries. This applies to code, notebook cells, specs, and acceptance criteria alike.

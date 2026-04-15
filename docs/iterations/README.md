@@ -11,7 +11,7 @@ Each active milestone has its own document (`milestone-NN.md`) containing iterat
 | Milestone | Title | Status | Document |
 |-----------|-------|--------|----------|
 | **0** | Foundation | ✅ Complete | [milestone-00.md](milestone-00.md) |
-| **1** | Baseline Agent | 🔨 In progress (1.2 complete) | [milestone-01.md](milestone-01.md) |
+| **1** | Baseline Agent | 🔨 In progress (1.3 complete) | [milestone-01.md](milestone-01.md) |
 | **2** | Eval Harness | 🔲 Not started | — |
 | **3** | Observability | 🔲 Not started | — |
 | **4** | Cloud Deployment | 🔲 Not started | — |

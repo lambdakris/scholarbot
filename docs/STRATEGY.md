@@ -308,3 +308,4 @@ Change is expected. The process handles it through the Sync step:
 | Letting the milestone plan live in conversation | Write it down in a durable artifact that can be referenced and revised |
 | Making corrections without capturing the lesson | Record what the change taught you; lessons compound across iterations and projects |
 | Embedding architectural decisions inside iteration scoping | When "where should this code live?" leads to "how should these modules interact?", stop — that's architecture, not scoping. Resolve through design first, then return to the iteration. |
+| Materializing specifics before the work that produces them | Don't write placeholder code, scaffold future phases, or prescribe implementation details for work that hasn't been done. Premature artifacts bias future decisions toward guesses instead of discoveries. Only commit what has been built and validated. |
