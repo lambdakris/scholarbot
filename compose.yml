@@ -32,11 +32,14 @@ services:
     env_file:
       - path: .env
         required: false
-    command: uv run -m debugpy --listen 0.0.0.0:5678 -m fastapi dev main.py --host 0.0.0.0
+    command: uv run -m debugpy --listen 0.0.0.0:5678 -m fastapi dev src/server/main.py --host 0.0.0.0
     develop:
       watch:
         - path: src/server
-          target: /src/server
+          target: /app/src/server
+          action: sync
+        - path: src/inference
+          target: /app/src/inference
           action: sync
 
   portal_service:
@@ -54,11 +57,11 @@ services:
     env_file:
       - path: .env
         required: false
-    command: uv run -m debugpy --listen 0.0.0.0:5679 -m streamlit run main.py --server.address 0.0.0.0
+    command: uv run -m debugpy --listen 0.0.0.0:5679 -m streamlit run src/portal/main.py --server.address 0.0.0.0
     develop:
       watch:
         - path: src/portal
-          target: /src/portal
+          target: /app/src/portal
           action: sync
 
 volumes:
