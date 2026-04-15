@@ -10,7 +10,8 @@ dependencies = [
     "datasets>=4.8.4",
     "fastapi[standard]>=0.115.0",
     "httpx>=0.28.0",
-    "mlflow>=3.0.0",
+    "jupyter>=1.1.1",
+    "mlflow>=3.11.1",
     "python-dotenv>=1.2.1",
     "streamlit>=1.40.0",
     "uvicorn>=0.34.0",
@@ -23,3 +24,13 @@ dev = [
     "pyright>=1.1.390",
     "ruff>=0.8.0",
 ]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
